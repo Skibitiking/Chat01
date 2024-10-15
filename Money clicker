@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Money Clicker</h1>
+        <div id="money">Money: $0</div>
+        <button id="clickButton">Click for Money</button>
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+.container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff5733;
+}
+let money = 0;
+const moneyDisplay = document.getElementById("money");
+const clickButton = document.getElementById("clickButton");
+const messageDisplay = document.getElementById("message");
+
+clickButton.addEventListener("click", () => {
+    money++;
+    updateDisplay();
+    checkMilestone();
+});
+
+function updateDisplay() {
+    moneyDisplay.textContent = `Money: $${money}`;
+}
+
+function checkMilestone() {
+    if (money > 0 && money % 10 === 0) {
+        messageDisplay.textContent = "You've earned $10!";
+    } else {
+        messageDisplay.textContent = "";
+    }
+}
